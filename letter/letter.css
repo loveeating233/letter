@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d9afd9;
+background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+}
+
+.card {
+    width: 700px;
+    height: 300px;
+    background-color: #f5efe6;
+    color: #334756;
+    box-shadow: 0px 0px 22px 5px rgb(237, 237, 237);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2.5em;
+    font-family: '楷体';
+    position: relative;
+    /* 使盒子具备透视效果 */
+    transform-style: preserve-3d;
+    transform: perspective(900px) rotateX(23deg);
+}
+.card::before,
+.card::after {
+    content: '';
+    width: 50%;
+    height: 100%;
+    color: #b7c4cf;
+    font-size: 40px;
+    position: absolute;
+    font-family: '华文行楷';
+
+}
+.card::before {
+    content: '写给你的';
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: 2s;
+    transform-origin: left;
+}
+.card::after {
+    content: '一封书信';
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transform-origin: right;
+    transition: 2s;
+
+}
+
+.card:hover::before {
+    transform: rotateY(-180deg);
+}
+.card:hover::after {
+    transform: rotateY(180deg);
+}
+.content {
+    opacity: 0;
+    transition: 2s;
+}
+.card:hover .content {
+    opacity: 1;
+}
+/* 心动效果 */
+/* 因为写动画太琐碎了 所以偷个懒 这里就不再写了 */
+@keyframes change {
+    30% {
+      transform: rotate(45deg) scale(1.1) translateX(-70%);
+    }
+    40% {
+      transform: rotate(45deg) scale(1.3) translateX(-70%);
+    }
+    45% {
+      transform: rotate(45deg) scale(0.9) translateX(-70%);
+    }
+    50% {
+      transform: rotate(45deg) scale(0.5) translateX(-70%);
+    }
+    70% {
+      transform: rotate(45deg) scale(1) translateX(-70%);
+    }
+    80% {
+      transform: rotate(45deg) scale(1.5) translateX(-70%);
+    }
+    90% {
+      transform: rotate(45deg) scale(0.7) translateX(-70%);
+    }
+    95% {
+      transform: rotate(45deg) scale(1.5) translateX(-70%);
+    }
+    100% {
+      transform: rotate(45deg) scale(1.1) translateX(-70%);
+    }
+  } 
+  /* cv工程师 嘿嘿嘿 */
+  .heart {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    /* pink yyds */
+    background-color: pink;
+    /* 往右下脚偏一些 */
+    transform: rotate(45deg) translateX(-70%);
+    /* 给这个爱心绑定动画 */
+    /* 动画的名字 */
+    animation-name: change;
+    /* 动画持续时间 */
+    animation-duration: 2.7s;
+    /* 无限次播放动画 永远对你心动 */
+    animation-iteration-count: infinite;
+    cursor: pointer;
+
+
+  }
+/* 画爱心桃 */
+.heart::before {
+    content: '';
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: pink;
+    position: absolute;
+    transform: translateX(-25px);
+
+}
+.heart::after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: pink;
+    position: absolute;
+    transform: translateY(-25px);
+}
+/* 中间的字体样式有点丑  调一下 */
+.text {
+    color: #7D6E83;
+    margin-top: 45px;
+    font-family: '华文行楷';
+}
+.textTwo {
+    color: #7D6E83;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 30px;
+}
+/* 神秘的box */
+#box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -200;
+    opacity: 0;
+    color: #00ffd1;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 13vh;
+    width: 90vw;
+    height: 87vh;
+    text-align: center;
+    background-image: url(bac.jpg);
+    overflow: hidden;
+    background-size: cover;
+    font-size: 25px;
+    font-family: '华文行楷';
+    transition: opacity 7s;
+}
